@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoIncome Hub - Vollautomatisches Einkommenssystem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">💰</span>
+                <span class="logo-text">AutoIncome Hub</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-page="autopilot">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Shopify AutoPilot</span>
+            </a>
+            <a href="#" class="nav-item" data-page="cycles">
+                <span class="nav-icon">🔄</span>
+                <span class="nav-text">30-Tage-Zyklen</span>
+            </a>
+            <a href="#" class="nav-item" data-page="earnings">
+                <span class="nav-icon">💰</span>
+                <span class="nav-text">Earnings Tracker</span>
+            </a>
+            <a href="#" class="nav-item" data-page="settings">
+                <span class="nav-icon">🔧</span>
+                <span class="nav-text">Settings &amp; APIs</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="version">Version 1.0.0</div>
+            <div class="copyright">© 2025 aiitec.de</div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <span>☰</span>
+                </button>
+                <h1 class="page-title" id="pageTitle">Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span class="user-name">Rudolf Sarkany</span>
+                    <div class="user-avatar">RS</div>
+                </div>
+                <button class="btn-logout">Logout</button>
+            </div>
+        </header>
+
+        <!-- Dashboard Page -->
+        <div class="page active" id="dashboard">
+            <!-- Live Earnings Counter -->
+            <div class="earnings-hero">
+                <div class="earnings-label">Gesamteinnahmen</div>
+                <div class="earnings-amount" id="totalEarnings">€0.00</div>
+                <div class="earnings-stats">
+                    <div class="stat">
+                        <span class="stat-label">Heute</span>
+                        <span class="stat-value" id="todayEarnings">€0.00</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Diese Woche</span>
+                        <span class="stat-value" id="weekEarnings">€0.00</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Dieser Monat</span>
+                        <span class="stat-value" id="monthEarnings">€0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Income Streams Cards -->
+            <div class="section">
+                <h2 class="section-title">Einkommensströme</h2>
+                <div class="income-streams" id="incomeStreams"></div>
+            </div>
+
+            <!-- 30-Day Projection -->
+            <div class="section">
+                <h2 class="section-title">30-Tage Projektion</h2>
+                <div class="card projection-card">
+                    <div class="projection-info">
+                        <div class="projection-amount">€3.821,00</div>
+                        <div class="projection-label">Erwartete Einnahmen in 30 Tagen</div>
+                    </div>
+                    <canvas id="projectionChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="section">
+                <h2 class="section-title">Quick Actions</h2>
+                <div class="quick-actions">
+                    <button class="action-btn">
+                        <span class="action-icon">🎥</span>
+                        <span class="action-text">YouTube Video hochladen</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="action-icon">📧</span>
+                        <span class="action-text">E-Mail Kampagne starten</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="action-icon">🛍️</span>
+                        <span class="action-text">Shopify Produkt hinzufügen</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="action-icon">📊</span>
+                        <span class="action-text">Report generieren</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shopify AutoPilot Page -->
+        <div class="page" id="autopilot">
+            <div class="wizard-container">
+                <!-- Progress Bar -->
+                <div class="wizard-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-steps" id="progressSteps"></div>
+                </div>
+
+                <!-- Wizard Content -->
+                <div class="wizard-content" id="wizardContent"></div>
+            </div>
+        </div>
+
+        <!-- 30-Tage-Zyklen Page -->
+        <div class="page" id="cycles">
+            <div class="cycles-header">
+                <h2>Automatisierte 30-Tage-Zyklen</h2>
+                <p class="cycles-description">In den nächsten 0 Minuten richtet sich dein vollautomatisches Einkommenssystem ein</p>
+            </div>
+
+            <div class="card">
+                <h3>Was passiert nach dem Setup?</h3>
+                <ul class="features-list">
+                    <li>✓ Alle Strategien laufen automatisch 24/7</li>
+                    <li>✓ Daily Revenue Updates im Dashboard</li>
+                    <li>✓ Wöchentliche Performance Reports per Email</li>
+                    <li>✓ 30-Tage Mega-Reports automatisiert via Email</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Aktive Kampagnen</h2>
+                    <button class="btn btn-primary">Neuen Zyklus starten</button>
+                </div>
+                <div class="card">
+                    <div class="table-container">
+                        <table class="data-table" id="campaignsTable">
+                            <thead>
+                                <tr>
+                                    <th>Kampagne</th>
+                                    <th>Plattform</th>
+                                    <th>Start-Datum</th>
+                                    <th>End-Datum</th>
+                                    <th>Status</th>
+                                    <th>Einnahmen</th>
+                                    <th>Aktionen</th>
+                                </tr>
+                            </thead>
+                            <tbody id="campaignsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="countdown-card">
+                <h3>Countdown bis nächste Auszahlung</h3>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="countdownDays">14</span>
+                        <span class="countdown-label">Tage</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="countdownHours">23</span>
+                        <span class="countdown-label">Stunden</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="countdownMinutes">45</span>
+                        <span class="countdown-label">Minuten</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings Tracker Page -->
+        <div class="page" id="earnings">
+            <div class="earnings-header">
+                <h2>Earnings Tracker</h2>
+                <div class="time-range-selector">
+                    <button class="time-btn active" data-range="today">Heute</button>
+                    <button class="time-btn" data-range="7days">7 Tage</button>
+                    <button class="time-btn" data-range="30days">30 Tage</button>
+                    <button class="time-btn" data-range="90days">90 Tage</button>
+                </div>
+            </div>
+
+            <div class="earnings-overview">
+                <div class="overview-card">
+                    <div class="overview-label">Gesamteinnahmen</div>
+                    <div class="overview-value">€2.847,32</div>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-label">Durchschnitt pro Tag</div>
+                    <div class="overview-value">€94,91</div>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-label">Bester Tag</div>
+                    <div class="overview-value">€156,78</div>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-label">Schlechtester Tag</div>
+                    <div class="overview-value">€19,99</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Einnahmen über Zeit</h3>
+                <div class="card">
+                    <canvas id="earningsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Breakdown nach Strategie</h3>
+                <div class="card">
+                    <canvas id="breakdownChart"></canvas>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <h3 class="section-title">Detaillierte Transaktionen</h3>
+                    <div class="filter-group">
+                        <select class="form-control" id="sourceFilter">
+                            <option value="all">Alle Quellen</option>
+                            <option value="YouTube AdSense">YouTube AdSense</option>
+                            <option value="ClickBank Affiliate">ClickBank Affiliate</option>
+                            <option value="Email Marketing">Email Marketing</option>
+                            <option value="PLR Produkt">PLR Produkt</option>
+                            <option value="Amazon Associates">Amazon Associates</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="table-container">
+                        <table class="data-table" id="transactionsTable">
+                            <thead>
+                                <tr>
+                                    <th>Datum</th>
+                                    <th>Quelle</th>
+                                    <th>Betrag</th>
+                                    <th>Transaktions-ID</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactionsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings & APIs Page -->
+        <div class="page" id="settings">
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">API Keys Verwaltung</h2>
+                    <button class="btn btn-primary" id="testAllApis">Test All APIs</button>
+                </div>
+                <div class="card">
+                    <div class="api-list" id="apiList"></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Email-Benachrichtigungen</h2>
+                <div class="card">
+                    <div class="settings-group">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-label">Tägliche Reports</div>
+                                <div class="setting-description">Erhalte täglich eine Zusammenfassung deiner Einnahmen</div>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-label">Wöchentliche Reports</div>
+                                <div class="setting-description">Wöchentliche Performance-Übersicht per Email</div>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-label">Fehler-Benachrichtigungen</div>
+                                <div class="setting-description">Sofortige Benachrichtigung bei API-Fehlern</div>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email-Adresse für Benachrichtigungen</label>
+                            <input type="email" class="form-control" value="rudolf.sarkany@aiitec.de" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Webhook URLs</h2>
+                <div class="card">
+                    <div class="webhook-list">
+                        <div class="webhook-item">
+                            <span class="webhook-label">Shopify Webhook:</span>
+                            <code class="webhook-url">https://aiitec.de/webhooks/shopify</code>
+                        </div>
+                        <div class="webhook-item">
+                            <span class="webhook-label">YouTube Webhook:</span>
+                            <code class="webhook-url">https://aiitec.de/webhooks/youtube</code>
+                        </div>
+                        <div class="webhook-item">
+                            <span class="webhook-label">ClickBank INS:</span>
+                            <code class="webhook-url">https://aiitec.de/webhooks/clickbank</code>
+                        </div>
+                        <div class="webhook-item">
+                            <span class="webhook-label">Brevo Webhook:</span>
+                            <code class="webhook-url">https://aiitec.de/webhooks/brevo</code>
+                        </div>
+                        <div class="webhook-item">
+                            <span class="webhook-label">Stripe Webhook:</span>
+                            <code class="webhook-url">https://aiitec.de/webhooks/stripe</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
