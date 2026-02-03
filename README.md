@@ -173,12 +173,37 @@ AutoIncomeApp/
 
 ## 🔐 Sicherheit
 
-**Wichtig:** API-Keys sollten niemals im Frontend-Code hardcodiert werden!
+**⚠️ KRITISCHER SICHERHEITSHINWEIS:**
 
-Für Produktionsumgebungen:
-1. Verwenden Sie Umgebungsvariablen
-2. Implementieren Sie ein Backend-Proxy für API-Calls
-3. Nutzen Sie Vercel Environment Variables
+Die aktuelle Version enthält hartcodierte API-Keys im Frontend-Code (app.js). Dies ist ein kritisches Sicherheitsrisiko und sollte **VOR** dem Produktions-Deployment behoben werden:
+
+### Sofortige Maßnahmen erforderlich:
+
+1. **API-Keys widerrufen und neu generieren:**
+   - Shopify Admin API Key
+   - YouTube Data API Key
+   - OpenAI API Key
+
+2. **Backend-Proxy implementieren:**
+   ```javascript
+   // Anstatt direkte API-Calls im Frontend:
+   // fetch('https://api.shopify.com/...')
+   
+   // Verwenden Sie einen Backend-Proxy:
+   fetch('/api/shopify/products') // Ihr Backend macht den API-Call
+   ```
+
+3. **Umgebungsvariablen verwenden:**
+   - Speichern Sie API-Keys in Vercel Environment Variables
+   - Zugriff nur über Backend/Server-Side Code
+   - Niemals im Frontend-Code
+
+### Empfohlene Architektur für Produktion:
+- Frontend (Vercel): Statische HTML/CSS/JS ohne API-Keys
+- Backend (Vercel Serverless Functions oder separater Server): API-Calls mit sicheren Keys
+- Environment Variables: Sichere Speicherung aller Credentials
+
+**Wichtig:** Die API-Keys im aktuellen Code sind Platzhalter für Entwicklungszwecke. Ersetzen Sie diese durch sichere Backend-Implementierung vor dem Live-Deployment!
 
 ## 📊 Features im Detail
 
