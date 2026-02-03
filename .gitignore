@@ -70,3 +70,10 @@ ENV/
 *.bak
 *.cache
 .cache/
+
+# Test/metadata directories (should be in .github or similar)
+/comment/
+/comments/
+/pull/
+/pull_requests/
+/repos/
